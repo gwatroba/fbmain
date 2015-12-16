@@ -1,31 +1,36 @@
 package pl.familybook.fbmain.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @Entity
 @XmlRootElement
-public class Profile{
-	
+public class Profile {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)	
+	@Column(insertable = false, columnDefinition = "SERIAL")
+	//@SequenceGenerator(name = "SERIAL", sequenceName = "profile_id_seq", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SERIAL") 	// incrementing by 2 :/
 	private long id;
-	@Column(length=25, nullable = false)
+	@Column(length = 25, nullable = false)
 	private String firstName;
-	@Column(length=25, nullable = false)
+	@Column(length = 25, nullable = false)
 	private String lastName;
-	@Column(length=25, unique = true, nullable = false)
+	@Column(length = 30, unique = true)
 	private String email;
-	
+	// @Basic(optional = false)
+	@Column(nullable = false, insertable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
+	private Date created;
+	// ad date of birth and date of name, city, family
+
 	public Profile() {
-		
+
 	}
-	
+
 	public Profile(long id, String firstName, String lastName, String email) {
 		this.id = id;
 		this.firstName = firstName;
@@ -37,9 +42,9 @@ public class Profile{
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
+//	public void setId(long id) {
+//		this.id = id;
+//	}
 
 	public String getFirstName() {
 		return firstName;
@@ -64,6 +69,13 @@ public class Profile{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	public Date getCreated() {
+		return created;
+	}
+
+//	public void setCreated(Date date) {
+//		this.created = date;
+//	}
+
 }

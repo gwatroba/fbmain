@@ -14,14 +14,14 @@ public class TestDb {
       EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "fbJPA" );
       
       EntityManager entitymanager = emfactory.createEntityManager();
-      entitymanager.getTransaction( ).begin( );
 
       Profile profile = new Profile( ); 
       //employee.setEid( 12012 );
       profile.setFirstName("Adam");
       profile.setLastName("Bielan");
-      profile.setEmail("adam3@bielan.pl");
+      profile.setEmail("adam2@bielan.pl");
       
+      entitymanager.getTransaction( ).begin( );
       entitymanager.persist(profile);
       entitymanager.getTransaction( ).commit( );
 

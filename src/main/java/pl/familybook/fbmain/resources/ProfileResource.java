@@ -30,7 +30,8 @@ public class ProfileResource {
 	//add new profile
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Profile addProfile(Profile profile) {
+	@Produces(MediaType.TEXT_PLAIN)
+	public String addProfile(Profile profile) {
 		return profileService.addProfile(profile);
 	}
 	
