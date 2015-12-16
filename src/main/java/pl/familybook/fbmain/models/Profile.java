@@ -1,10 +1,14 @@
 package pl.familybook.fbmain.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -16,15 +20,21 @@ public class Profile {
 	//@SequenceGenerator(name = "SERIAL", sequenceName = "profile_id_seq", allocationSize = 1)
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SERIAL") 	// incrementing by 2 :/
 	private long id;
+	@Column(length = 25, nullable = false, unique = true)
+	private String login;
 	@Column(length = 25, nullable = false)
 	private String firstName;
 	@Column(length = 25, nullable = false)
 	private String lastName;
 	@Column(length = 30, unique = true)
 	private String email;
-	// @Basic(optional = false)
 	@Column(nullable = false, insertable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
 	private Date created;
+	// sequence for fk is made :?
+	@OneToOne
+	@JoinColumn(name = "profileId")
+	private List<Message> messages;
+	
 	// ad date of birth and date of name, city, family
 
 	public Profile() {

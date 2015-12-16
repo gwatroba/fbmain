@@ -17,13 +17,13 @@ public class TestDb {
 
       Profile profile = new Profile( ); 
       //employee.setEid( 12012 );
-      profile.setFirstName("Adam");
-      profile.setLastName("Bielan");
-      profile.setEmail("adam2@bielan.pl");
+//      profile.setFirstName("Adam");
+//      profile.setLastName("Bielan");
+//      profile.setEmail("adam2@bielan.pl");
       
-      entitymanager.getTransaction( ).begin( );
-      entitymanager.persist(profile);
-      entitymanager.getTransaction( ).commit( );
+      //entitymanager.getTransaction( ).begin( );
+      //entitymanager.persist(profile);
+      //entitymanager.getTransaction( ).commit( );
 
       entitymanager.close( );
       emfactory.close( );

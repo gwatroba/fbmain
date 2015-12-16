@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import pl.familybook.fbmain.models.Profile;
 
@@ -22,7 +22,7 @@ public class ProfileService {
 	// add closing eFactory and eManager?
 
 	public List<Profile> getProfiles() {
-		Query query = eManager.createQuery("SELECT p from Profile p");
+		TypedQuery<Profile> query = eManager.createQuery("SELECT p from Profile p", Profile.class);
 		List<Profile> profileList = query.getResultList();
 		return profileList;
 	}

@@ -8,6 +8,7 @@
    <persistence-unit name="fbJPA" transaction-type="RESOURCE_LOCAL">
    	  
       <class>pl.familybook.fbmain.models.Profile</class>
+      <class>pl.familybook.fbmain.models.Message</class>
 
       <properties>
          <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fbdb"/>
